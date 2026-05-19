@@ -20,6 +20,73 @@
     <!-- Canvas para efeito de estrelas/partículas douradas -->
     <canvas id="particles-canvas"></canvas>
     
+    <!-- Tela de Abertura com o Envelope 3D de Luxo -->
+    <div class="welcome-overlay" id="welcome-overlay">
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                
+                <!-- Aba Superior (Flap Top) que rotaciona em 3D -->
+                <div class="envelope-flap-top">
+                    <svg viewBox="0 0 100 55" preserveAspectRatio="none" class="flap-svg">
+                        <polygon points="0,0 100,0 50,55" />
+                    </svg>
+                    <!-- Desenho de ramos e folhas em relevo sobre a aba superior -->
+                    <div class="flap-leaves">
+                        <svg viewBox="0 0 100 55" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.8" class="leaves-svg">
+                            <path d="M15,10 C25,12 30,18 45,28" />
+                            <path d="M22,12 C25,9 28,12 26,14" fill="rgba(255,255,255,0.06)" />
+                            <path d="M30,16 C33,13 36,16 34,18" fill="rgba(255,255,255,0.06)" />
+                            <path d="M85,10 C75,12 70,18 55,28" />
+                            <path d="M78,12 C75,9 72,12 74,14" fill="rgba(255,255,255,0.06)" />
+                            <path d="M70,16 C67,13 64,16 66,18" fill="rgba(255,255,255,0.06)" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Aba Esquerda (Flap Left) -->
+                <div class="envelope-flap-left">
+                    <svg viewBox="0 0 50 100" preserveAspectRatio="none" class="flap-svg">
+                        <polygon points="0,0 0,100 50,50" />
+                    </svg>
+                </div>
+                
+                <!-- Aba Direita (Flap Right) -->
+                <div class="envelope-flap-right">
+                    <svg viewBox="0 0 50 100" preserveAspectRatio="none" class="flap-svg">
+                        <polygon points="50,0 50,100 0,50" />
+                    </svg>
+                </div>
+                
+                <!-- Aba Inferior (Flap Bottom) -->
+                <div class="envelope-flap-bottom">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none" class="flap-svg">
+                        <polygon points="0,60 100,60 50,20" />
+                    </svg>
+                    <!-- Detalhe de folhas no centro inferior -->
+                    <div class="bottom-leaves">
+                        <svg viewBox="0 0 100 60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.8" class="leaves-svg">
+                            <path d="M50,28 C45,35 40,42 25,50" />
+                            <path d="M50,28 C55,35 60,42 75,50" />
+                            <path d="M48,34 C44,32 42,35 44,37" fill="rgba(255,255,255,0.06)" />
+                            <path d="M52,34 C56,32 58,35 56,37" fill="rgba(255,255,255,0.06)" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Papel interno que simula o convite escorregando -->
+                <div class="envelope-paper"></div>
+                
+                <!-- Selo de Cera Dourado com o relevo "80" -->
+                <div class="wax-seal" id="wax-seal">
+                    <span class="seal-text">80</span>
+                </div>
+                
+                <!-- Dica para abrir -->
+                <div class="open-hint animate-pulse-hint">Toque para abrir</div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Wrapper principal para centralizar e dar efeito de profundidade no Desktop -->
     <div class="invite-wrapper">
         <main class="invite-card">

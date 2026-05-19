@@ -4,8 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa o sistema de partículas douradas
-    initParticles();
+    // Inicializa a animação de abertura do envelope
+    initEnvelopeAnimation();
     
     // Configura efeitos adicionais nos botões
     initButtonEffects();
@@ -197,3 +197,47 @@ function createRippleEffect(event, element) {
         style.remove();
     }, 600);
 }
+
+/* ==========================================================================
+   CONTROLE DE ABERTURA DO ENVELOPE DE LUXO
+   ========================================================================== */
+function initEnvelopeAnimation() {
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const envelope = document.getElementById('envelope');
+    const waxSeal = document.getElementById('wax-seal');
+    
+    if (!welcomeOverlay || !envelope) return;
+    
+    const handleOpen = () => {
+        // Remove ouvintes para evitar disparos duplicados
+        envelope.removeEventListener('click', handleOpen);
+        if (waxSeal) waxSeal.removeEventListener('click', handleOpen);
+        
+        // Adiciona classe de abertura que dispara as transições CSS
+        welcomeOverlay.classList.add('opening');
+        
+        // Ativa o convite principal após a aba do envelope iniciar a abertura
+        setTimeout(() => {
+            document.body.classList.add('invite-active');
+            
+            // Inicializa as partículas douradas somente após a abertura do envelope
+            initParticles();
+        }, 450);
+        
+        // Oculta completamente a tela de boas-vindas do DOM após o encerramento do fade-out
+        setTimeout(() => {
+            welcomeOverlay.style.display = 'none';
+            document.body.classList.add('overlay-removed');
+        }, 1600);
+    };
+    
+    // Permite disparar a abertura clicando em qualquer ponto do envelope ou no selo
+    envelope.addEventListener('click', handleOpen);
+    if (waxSeal) {
+        waxSeal.addEventListener('click', (e) => {
+            e.stopPropagation(); // Previne propagação para o envelope
+            handleOpen();
+        });
+    }
+}
+

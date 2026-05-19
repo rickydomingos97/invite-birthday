@@ -78,6 +78,14 @@ body {
     rgba(10, 25, 60, 0.4) 0%,
     rgba(3, 7, 18, 0.95) 100%
   );
+  opacity: 0;
+  transform: scale(0.9) translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.invite-active .invite-wrapper {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 /* O cartão do convite em si */
@@ -403,6 +411,268 @@ body {
       0 4px 18px rgba(212, 175, 55, 0.35),
       0 0 0 0 rgba(212, 175, 55, 0);
   }
+}
+
+/* ==========================================================================
+   TELA DE ABERTURA E ENVELOPE 3D
+   ========================================================================== */
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-bg);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
+}
+
+.welcome-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+.envelope-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 360px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1500px;
+}
+
+.envelope {
+  position: relative;
+  width: 290px;
+  height: 290px;
+  background: linear-gradient(135deg, #cf866e 0%, #b26c55 50%, #98523c 100%);
+  border-radius: 8px;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.65),
+    0 0 15px rgba(207, 134, 110, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.envelope:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(207, 134, 110, 0.25);
+}
+
+.envelope-flap-top,
+.envelope-flap-left,
+.envelope-flap-right,
+.envelope-flap-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.flap-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Aba Superior (Flap Top) */
+.envelope-flap-top {
+  height: 55%;
+  z-index: 4;
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.3s;
+}
+
+.envelope-flap-top .flap-svg {
+  fill: #e59a81;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+}
+
+.flap-leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Aba Esquerda (Flap Left) */
+.envelope-flap-left {
+  z-index: 3;
+}
+
+.envelope-flap-left .flap-svg {
+  fill: #cc8067;
+  filter: drop-shadow(2px 0 3px rgba(0, 0, 0, 0.15));
+}
+
+/* Aba Direita (Flap Right) */
+.envelope-flap-right {
+  z-index: 3;
+}
+
+.envelope-flap-right .flap-svg {
+  fill: #cc8067;
+  filter: drop-shadow(-2px 0 3px rgba(0, 0, 0, 0.15));
+}
+
+/* Aba Inferior (Flap Bottom) */
+.envelope-flap-bottom {
+  z-index: 3;
+}
+
+.envelope-flap-bottom .flap-svg {
+  fill: #b56c54;
+  filter: drop-shadow(0 -3px 4px rgba(0, 0, 0, 0.2));
+}
+
+.bottom-leaves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+}
+
+.leaves-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Papel Interno */
+.envelope-paper {
+  position: absolute;
+  width: 90%;
+  height: 85%;
+  left: 5%;
+  bottom: 5%;
+  background: radial-gradient(circle at top left, #ffffff 0%, #f7f3eb 100%);
+  border-radius: 6px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s;
+  transform-origin: bottom;
+}
+
+/* Selo de Cera Dourado */
+.wax-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  z-index: 5;
+  background: radial-gradient(circle at 35% 35%, #fff5cc 0%, #e2b43b 35%, #b28514 80%, #7c5a03 100%);
+  border-radius: 52% 48% 51% 49% / 49% 51% 48% 52%;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: radial-gradient(circle at 35% 35%, #fff9e6 0%, #ecc455 35%, #ca991b 80%, #906b04 100%);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.65),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.seal-text {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #593e03;
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.55),
+    0 -1px 1px rgba(0, 0, 0, 0.65);
+  letter-spacing: -1px;
+  margin-top: -2px;
+  user-select: none;
+}
+
+.open-hint {
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #f3e5ab;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.animate-pulse-hint {
+  animation: pulseHint 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+/* Transições da Animação de Abertura */
+.welcome-overlay.opening {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.welcome-overlay.opening .wax-seal {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+.welcome-overlay.opening .envelope-flap-top {
+  transform: rotateX(180deg);
+  z-index: 1; /* vai para trás do papel interno */
+}
+
+.welcome-overlay.opening .envelope-paper {
+  transform: translateY(-70%) scale(1.02);
+  opacity: 0;
+}
+
+.welcome-overlay.opening .open-hint {
+  opacity: 0;
 }
 
 /* ==========================================================================

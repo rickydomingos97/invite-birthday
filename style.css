@@ -149,7 +149,7 @@ html, body {
 .nickname {
     font-size: 4.6rem;
     font-weight: 400;
-    margin-top: -5px;
+    margin-top: 3px; /* Deslocado 8px para baixo (era -5px) */
     color: #ffffff;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
 }
@@ -237,6 +237,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    margin-top: 32px; /* Deslocado 32px para baixo */
     margin-bottom: 20px;
 }
 

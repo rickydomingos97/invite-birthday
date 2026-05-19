@@ -449,8 +449,8 @@ body {
   position: relative;
   width: 100%;
   max-width: 450px;
-  height: 450px;
-  max-height: 95vw;
+  height: 350px;
+  max-height: 85vw;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -461,10 +461,10 @@ body {
 .envelope {
   position: relative;
   width: 390px;
-  height: 390px;
+  height: 290px;
   max-width: 85vw;
-  max-height: 85vw;
-  aspect-ratio: 1 / 1;
+  max-height: 65vw;
+  aspect-ratio: 390 / 290;
   background: linear-gradient(135deg, #cf866e 0%, #b26c55 50%, #98523c 100%);
   border-radius: 8px;
   box-shadow:

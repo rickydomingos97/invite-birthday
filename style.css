@@ -169,8 +169,12 @@ body {
   font-size: 4.6rem;
   font-weight: 400;
   margin-top: 3px; /* Deslocado 8px para baixo (era -5px) */
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+  color: var(--gold-primary); /* fallback */
+  background: linear-gradient(135deg, #fff2a3 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.75));
 }
 
 /* ==========================================================================

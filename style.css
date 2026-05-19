@@ -1,0 +1,488 @@
+/* ==========================================================================
+   SISTEMA DE DESIGN & VARIÁVEIS (PALETA DE LUXO)
+   ========================================================================== */
+:root {
+    /* Tons de Azul Real/Marinho do tecido */
+    --primary-blue: #0a1128;
+    --dark-bg: #030712;
+    --navy-overlay: rgba(10, 17, 40, 0.6);
+    
+    /* Tons de Ouro e Ouro Rosé */
+    --gold-primary: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-dark: #b8860b;
+    --gold-bronze: #aa7c11;
+    --rose-gold: #cda4de; /* suave e elegante */
+    
+    /* Tons de Texto e Detalhes */
+    --text-light: #f9f6f0;
+    --text-muted: rgba(249, 246, 240, 0.7);
+    --glass-bg: rgba(7, 15, 38, 0.65);
+    --glass-border: rgba(212, 175, 55, 0.25);
+    
+    /* Fontes */
+    --font-cursive: 'Great Vibes', cursive;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+}
+
+/* ==========================================================================
+   RESET & CONFIGURAÇÕES BÁSICAS
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Canvas para Partículas Douradas */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL (RESPONSIVO E DESKTOP-CENTRALIZADO)
+   ========================================================================== */
+/* Wrapper geral que centraliza o convite no Desktop com iluminação ambiente */
+.invite-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: radial-gradient(circle at center, rgba(10, 25, 60, 0.4) 0%, rgba(3, 7, 18, 0.95) 100%);
+}
+
+/* O cartão do convite em si */
+.invite-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px; /* Largura ideal de tela móvel */
+    height: 820px;
+    max-height: 90vh;
+    border-radius: 20px;
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 
+                0 0 40px rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de hover suave no desktop */
+@media (min-width: 769px) {
+    .invite-card:hover {
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 
+                    0 0 50px rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* ==========================================================================
+   CONTEÚDO INTERNO
+   ========================================================================== */
+.invite-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(
+        to bottom, 
+        rgba(3, 7, 18, 0.15) 0%, 
+        rgba(3, 7, 18, 0.5) 50%, 
+        rgba(3, 7, 18, 0.85) 100%
+    );
+}
+
+/* ==========================================================================
+   CABEÇALHO - NOME DA ANIVERSARIANTE
+   ========================================================================== */
+.invite-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.cursive-name {
+    font-family: var(--font-cursive);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+    padding: 10px 0; /* Espaço extra para evitar cortes de descenders e ascenders */
+}
+
+.first-name {
+    font-size: 3.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+}
+
+.nickname {
+    font-size: 4.8rem;
+    font-weight: 400;
+    margin-top: 2px;
+    color: var(--gold-light);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5), 0 3px 6px rgba(0, 0, 0, 0.95);
+}
+
+/* ==========================================================================
+   SEÇÃO CORPORAL - DETALHES & BADGE
+   ========================================================================== */
+.invite-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+/* Selo de 80 Anos */
+.age-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.badge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
+}
+
+.age-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Mensagem de Convite */
+.tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--text-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    max-width: 280px;
+    line-height: 1.35;
+    opacity: 0.95;
+}
+
+/* Bloco Glassmorphism de Informações */
+.info-container {
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brilho sutil no vidro */
+.info-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+.info-item {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.info-value {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-light);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    line-height: 1.2;
+}
+
+.info-value.highlight {
+    font-family: var(--font-body);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.35rem;
+}
+
+.info-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
+}
+
+/* ==========================================================================
+   RODAPÉ E BOTÕES DE AÇÃO
+   ========================================================================== */
+.invite-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+/* Estilo geral de botões */
+.btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Botão RSVP Premium (Dourado Metálico com animação de brilho e pulso) */
+.btn-rsvp {
+    background: linear-gradient(135deg, var(--gold-bronze) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
+    color: var(--primary-blue);
+    border: none;
+    box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    animation: button-pulse 2s infinite ease-in-out;
+}
+
+.btn-rsvp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6), 
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-bronze) 100%);
+}
+
+.btn-rsvp:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+}
+
+.whatsapp-icon {
+    fill: var(--primary-blue);
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.2));
+}
+
+/* Efeito de brilho varrendo o botão */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.35) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: none;
+    animation: shine 4s infinite linear;
+}
+
+/* Botão Secundário para Agenda */
+.btn-calendar {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-light);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-calendar:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold-light);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.18);
+}
+
+.btn-calendar:active {
+    transform: translateY(1px);
+}
+
+.calendar-icon {
+    color: var(--gold-light);
+}
+
+/* ==========================================================================
+   ANIMAÇÕES DE ENTRADA & EFEITOS
+   ========================================================================== */
+/* Classe utilitária para animação */
+.animate-slide-up {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de brilho que varre o botão RSVP */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    15% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Pulso delicado no botão de ação principal */
+@keyframes button-pulse {
+    0% {
+        box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35), 0 0 0 0 rgba(212, 175, 55, 0.2);
+    }
+    50% {
+        box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), 0 0 0 8px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35), 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE E ADAPTAÇÕES DE TELA
+   ========================================================================== */
+/* Para telas pequenas / celulares ultra-compactos (ex: iPhone SE) */
+@media (max-height: 740px) {
+    .invite-card {
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .invite-wrapper {
+        padding: 0;
+    }
+    
+    .invite-content {
+        padding: 25px 20px;
+    }
+    
+    .cursive-name .first-name {
+        font-size: 2.5rem;
+    }
+    
+    .cursive-name .nickname {
+        font-size: 4rem;
+    }
+    
+    .tagline {
+        font-size: 1.25rem;
+        max-width: 250px;
+    }
+    
+    .info-container {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .info-value {
+        font-size: 1.15rem;
+    }
+    
+    .btn {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Para visualização perfeita em dispositivos móveis padrão */
+@media (max-width: 480px) {
+    .invite-wrapper {
+        padding: 0;
+    }
+    
+    .invite-card {
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .invite-content {
+        padding: 35px 24px;
+    }
+}

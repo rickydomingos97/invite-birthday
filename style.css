@@ -2,59 +2,62 @@
    SISTEMA DE DESIGN & VARIÁVEIS (PALETA DE LUXO)
    ========================================================================== */
 :root {
-    /* Tons de Azul Real/Marinho do tecido */
-    --primary-blue: #0a1128;
-    --dark-bg: #030712;
-    --navy-overlay: rgba(10, 17, 40, 0.6);
-    
-    /* Tons de Ouro e Ouro Rosé */
-    --gold-primary: #d4af37;
-    --gold-light: #f3e5ab;
-    --gold-dark: #b8860b;
-    --gold-bronze: #aa7c11;
-    --rose-gold: #cda4de; /* suave e elegante */
-    
-    /* Tons de Texto e Detalhes */
-    --text-light: #f9f6f0;
-    --text-muted: rgba(249, 246, 240, 0.7);
-    --glass-bg: rgba(7, 15, 38, 0.65);
-    --glass-border: rgba(212, 175, 55, 0.25);
-    
-    /* Fontes */
-    --font-cursive: 'Great Vibes', cursive;
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Instrument Serif', serif;
+  /* Tons de Azul Real/Marinho do tecido */
+  --primary-blue: #0a1128;
+  --dark-bg: #030712;
+  --navy-overlay: rgba(10, 17, 40, 0.6);
+
+  /* Tons de Ouro e Ouro Rosé */
+  --gold-primary: #d4af37;
+  --gold-light: #f3e5ab;
+  --gold-dark: #b8860b;
+  --gold-bronze: #aa7c11;
+  --rose-gold: #cda4de; /* suave e elegante */
+
+  /* Tons de Texto e Detalhes */
+  --text-light: #f9f6f0;
+  --text-muted: rgba(249, 246, 240, 0.7);
+  --glass-bg: rgba(7, 15, 38, 0.65);
+  --glass-border: rgba(212, 175, 55, 0.25);
+
+  /* Fontes */
+  --font-cursive: "Great Vibes", cursive;
+  --font-heading: "Cinzel", serif;
+  --font-body: "Instrument Serif", serif;
 }
 
 /* ==========================================================================
    RESET & CONFIGURAÇÕES BÁSICAS
    ========================================================================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Canvas para Partículas Douradas */
 #particles-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ==========================================================================
@@ -62,275 +65,295 @@ html, body {
    ========================================================================== */
 /* Wrapper geral que centraliza o convite no Desktop com iluminação ambiente */
 .invite-wrapper {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: radial-gradient(circle at center, rgba(10, 25, 60, 0.4) 0%, rgba(3, 7, 18, 0.95) 100%);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(10, 25, 60, 0.4) 0%,
+    rgba(3, 7, 18, 0.95) 100%
+  );
 }
 
 /* O cartão do convite em si */
 .invite-card {
-    position: relative;
-    width: 100%;
-    max-width: 440px; /* Largura ideal de tela móvel */
-    height: 820px;
-    max-height: 90vh;
-    border-radius: 20px;
-    background-image: url('assets/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 
-                0 0 40px rgba(212, 175, 55, 0.12);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  width: 100%;
+  max-width: 440px; /* Largura ideal de tela móvel */
+  height: 820px;
+  max-height: 90vh;
+  border-radius: 20px;
+  background-image: url("assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Efeito de hover suave no desktop */
 @media (min-width: 769px) {
-    .invite-card:hover {
-        transform: translateY(-5px) scale(1.01);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 
-                    0 0 50px rgba(212, 175, 55, 0.2);
-    }
+  .invite-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.9),
+      0 0 50px rgba(212, 175, 55, 0.2);
+  }
 }
 
 /* ==========================================================================
    CONTEÚDO INTERNO (DIAGRAMADO CONFORME REFERÊNCIA)
    ========================================================================== */
 .invite-content {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-    padding: 30px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* ==========================================================================
    CABEÇALHO - NOME DA ANIVERSARIANTE
    ========================================================================== */
 .invite-header {
-    width: 100%;
-    text-align: center;
-    margin-top: calc(14% + 32px); /* Posicionamento exato sob as flores superiores, ajustado 32px para baixo */
+  width: 100%;
+  text-align: center;
+  margin-top: calc(
+    14% + 32px
+  ); /* Posicionamento exato sob as flores superiores, ajustado 32px para baixo */
 }
 
 .cursive-name {
-    font-family: var(--font-cursive);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px;
-    line-height: 1.1;
-    padding: 5px 0;
+  font-family: var(--font-cursive);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  line-height: 1.1;
+  padding: 5px 0;
 }
 
 .first-name {
-    font-size: 2.9rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
+  font-size: 2.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
 }
 
 .nickname {
-    font-size: 4.6rem;
-    font-weight: 400;
-    margin-top: 3px; /* Deslocado 8px para baixo (era -5px) */
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+  font-size: 4.6rem;
+  font-weight: 400;
+  margin-top: 3px; /* Deslocado 8px para baixo (era -5px) */
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
 }
 
 /* ==========================================================================
    SEÇÃO CORPORAL - DETALHES DO EVENTO (FLUTUANDO DIRETAMENTE NO FUNDO)
    ========================================================================== */
 .invite-body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* Idade */
 .age-title {
-    font-family: var(--font-body); /* Serif elegante e limpa conforme a imagem */
-    font-size: 1.7rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-    margin-top: 25px;
+  font-family: var(--font-body); /* Serif elegante e limpa conforme a imagem */
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  margin-top: 25px;
 }
 
 /* Mensagem de Convite */
 .tagline {
-    font-family: var(--font-body);
-    font-style: normal;
-    font-size: 1.35rem;
-    font-weight: 300;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-    max-width: 290px;
-    line-height: 1.4;
-    margin-top: 28px;
-    opacity: 0.95;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  max-width: 290px;
+  line-height: 1.4;
+  margin-top: 28px;
+  opacity: 0.95;
 }
 
 /* Data e Hora */
 .date-time {
-    font-family: var(--font-body);
-    font-size: 1.55rem;
-    font-weight: 500;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-    margin-top: 32px;
+  font-family: var(--font-body);
+  font-size: 1.55rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  margin-top: 32px;
 }
 
 /* Container de Localização */
 .location-container {
-    width: 100%;
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
+  width: 100%;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
 
 .location-label {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-    opacity: 0.9;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  opacity: 0.9;
 }
 
 .location-value {
-    font-family: var(--font-body);
-    font-size: 1.35rem;
-    font-weight: 400;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-    max-width: 320px;
-    line-height: 1.25;
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  max-width: 320px;
+  line-height: 1.25;
 }
 
 /* ==========================================================================
    RODAPÉ E BOTÕES DE AÇÃO
    ========================================================================== */
 .invite-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 32px; /* Deslocado 32px para baixo */
-    margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px; /* Deslocado 32px para baixo */
+  margin-bottom: 20px;
 }
 
 /* Estilo geral de botões */
 .btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 20px;
-    border-radius: 50px;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Botão RSVP Premium (Dourado Metálico com animação de brilho e pulso) */
 .btn-rsvp {
-    background: linear-gradient(135deg, var(--gold-bronze) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
-    color: var(--primary-blue);
-    border: none;
-    box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4), 
-                inset 0 1px 1px rgba(255, 255, 255, 0.3);
-    animation: button-pulse 2s infinite ease-in-out;
+  background: linear-gradient(
+    135deg,
+    var(--gold-bronze) 0%,
+    var(--gold-primary) 50%,
+    var(--gold-light) 100%
+  );
+  color: var(--primary-blue);
+  border: none;
+  box-shadow:
+    0 4px 18px rgba(212, 175, 55, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  animation: button-pulse 2s infinite ease-in-out;
 }
 
 .btn-rsvp:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6), 
-                inset 0 1px 2px rgba(255, 255, 255, 0.5);
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-bronze) 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 25px rgba(212, 175, 55, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(
+    135deg,
+    var(--gold-light) 0%,
+    var(--gold-primary) 50%,
+    var(--gold-bronze) 100%
+  );
 }
 
 .btn-rsvp:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
 }
 
 .whatsapp-icon {
-    fill: var(--primary-blue);
-    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.2));
+  fill: var(--primary-blue);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.2));
 }
 
 /* Efeito de brilho varrendo o botão */
 .btn-shine {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        to right, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.35) 50%, 
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-25deg);
-    transition: none;
-    animation: shine 4s infinite linear;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  animation: shine 4s infinite linear;
 }
 
 /* Botão Secundário para Agenda */
 .btn-calendar {
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text-light);
-    border: 1px solid rgba(212, 175, 55, 0.45);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-light);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-calendar:hover {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: var(--gold-light);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.18);
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--gold-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.18);
 }
 
 .btn-calendar:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .calendar-icon {
-    color: var(--gold-light);
+  color: var(--gold-light);
 }
 
 /* ==========================================================================
@@ -338,42 +361,48 @@ html, body {
    ========================================================================== */
 /* Classe utilitária para animação */
 .animate-slide-up {
-    opacity: 0;
-    transform: translateY(25px);
-    animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(25px);
+  animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Efeito de brilho que varre o botão RSVP */
 @keyframes shine {
-    0% {
-        left: -100%;
-    }
-    15% {
-        left: 150%;
-    }
-    100% {
-        left: 150%;
-    }
+  0% {
+    left: -100%;
+  }
+  15% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
 }
 
 /* Pulso delicado no botão de ação principal */
 @keyframes button-pulse {
-    0% {
-        box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35), 0 0 0 0 rgba(212, 175, 55, 0.2);
-    }
-    50% {
-        box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), 0 0 0 8px rgba(212, 175, 55, 0);
-    }
-    100% {
-        box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35), 0 0 0 0 rgba(212, 175, 55, 0);
-    }
+  0% {
+    box-shadow:
+      0 4px 18px rgba(212, 175, 55, 0.35),
+      0 0 0 0 rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 6px 25px rgba(212, 175, 55, 0.5),
+      0 0 0 8px rgba(212, 175, 55, 0);
+  }
+  100% {
+    box-shadow:
+      0 4px 18px rgba(212, 175, 55, 0.35),
+      0 0 0 0 rgba(212, 175, 55, 0);
+  }
 }
 
 /* ==========================================================================
@@ -381,63 +410,63 @@ html, body {
    ========================================================================== */
 /* Para telas pequenas / celulares ultra-compactos (ex: iPhone SE) */
 @media (max-height: 740px) {
-    .invite-card {
-        height: 100vh;
-        max-height: 100vh;
-        border-radius: 0;
-        border: none;
-    }
-    
-    .invite-wrapper {
-        padding: 0;
-    }
-    
-    .invite-content {
-        padding: 25px 20px;
-    }
-    
-    .cursive-name .first-name {
-        font-size: 2.5rem;
-    }
-    
-    .cursive-name .nickname {
-        font-size: 4rem;
-    }
-    
-    .tagline {
-        font-size: 1.25rem;
-        max-width: 250px;
-    }
-    
-    .info-container {
-        padding: 15px;
-        gap: 12px;
-    }
-    
-    .info-value {
-        font-size: 1.15rem;
-    }
-    
-    .btn {
-        padding: 12px 15px;
-        font-size: 0.8rem;
-    }
+  .invite-card {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .invite-wrapper {
+    padding: 0;
+  }
+
+  .invite-content {
+    padding: 25px 20px;
+  }
+
+  .cursive-name .first-name {
+    font-size: 2.5rem;
+  }
+
+  .cursive-name .nickname {
+    font-size: 4rem;
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    max-width: 250px;
+  }
+
+  .info-container {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .info-value {
+    font-size: 1.15rem;
+  }
+
+  .btn {
+    padding: 12px 15px;
+    font-size: 0.8rem;
+  }
 }
 
 /* Para visualização perfeita em dispositivos móveis padrão */
 @media (max-width: 480px) {
-    .invite-wrapper {
-        padding: 0;
-    }
-    
-    .invite-card {
-        height: 100vh;
-        max-height: 100vh;
-        border-radius: 0;
-        border: none;
-    }
-    
-    .invite-content {
-        padding: 35px 24px;
-    }
+  .invite-wrapper {
+    padding: 0;
+  }
+
+  .invite-card {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .invite-content {
+    padding: 35px 24px;
+  }
 }
